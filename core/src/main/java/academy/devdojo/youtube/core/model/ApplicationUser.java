@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ApplicationUser implements AbstractEntity {
     /**
@@ -29,6 +28,7 @@ public class ApplicationUser implements AbstractEntity {
     @NotNull(message = "The field 'username' is mandatory")
     @Column(nullable = false)
     private String username;
+    @ToString.Exclude
     @NotNull(message = "The field 'password' is mandatory")
     @Column(nullable = false)
     private String password;

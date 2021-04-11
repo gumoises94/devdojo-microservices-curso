@@ -20,7 +20,7 @@ public class JwtConfiguration {
 	@NestedConfigurationProperty
 	private Header header = new Header();
 	private int expiration = 3600;
-	private String privateKey = "CSF24lrgeep4BCXjKP91FdtQtwIxEtL1";
+	private String privateKey = "CSF24lrgeep4BCXjKP91FdtQtwIxEtL1"; //generated random string with length 32
 	private String type = "encrypted";
 	
 	@Getter
