@@ -3,6 +3,7 @@ package academy.devdojo.youtube.security.config;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,7 +31,9 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
 				})
 			.and()
 			.authorizeRequests()
-				.antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
+				.antMatchers(jwtConfiguration.getLoginUrl(), "/**/swagger-ui.html").permitAll()
+				.antMatchers(HttpMethod.GET, "/**/swagger-resources/**", 
+						"/**/webjars/springfox-swagger-ui/**", "/**/v2/api-docs/**").permitAll()
 				.antMatchers("/course/v1/admin/**").hasRole("ADMIN")
 				.antMatchers("/auth/user/**").hasAnyRole("USER", "ADMIN")
 				.anyRequest().authenticated();

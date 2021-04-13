@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import academy.devdojo.youtube.core.model.ApplicationUser;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("user")
+@Api("Endpoints to manage user's info")
 public class UserInfoController {
 
 	@GetMapping(path = "info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ApiOperation(value="Get user information from the token", response=ApplicationUser.class)
 	public ResponseEntity<ApplicationUser> getUserInfo(Principal principal) {
 		ApplicationUser user = castAndGetPrincipal(principal);
 		
