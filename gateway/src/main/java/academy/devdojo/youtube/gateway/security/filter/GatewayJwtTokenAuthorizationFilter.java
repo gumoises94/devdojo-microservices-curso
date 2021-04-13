@@ -30,7 +30,7 @@ public class GatewayJwtTokenAuthorizationFilter extends JwtTokenAuthorizationFil
 			throws ServletException, IOException {
 		String header = request.getHeader(jwtConfiguration.getHeader().getName());
 		
-		if(isAuthorizationHeader(header)) {
+		if(isJwtAuthorizationHeader(header)) {
 			String token = getTokenFromAuthorizationHeader(header);
 			
 			String signedToken = tokenConverter.decryptToken(token);
@@ -46,8 +46,8 @@ public class GatewayJwtTokenAuthorizationFilter extends JwtTokenAuthorizationFil
 		filterChain.doFilter(request, response);
 	}
 	
-	private boolean isAuthorizationHeader(String header) {
-		if(header != null && header.startsWith(jwtConfiguration.getHeader().getName()))
+	private boolean isJwtAuthorizationHeader(String header) {
+		if(header != null && header.startsWith(jwtConfiguration.getHeader().getPrefix()))
 			return true;
 		
 		return false;

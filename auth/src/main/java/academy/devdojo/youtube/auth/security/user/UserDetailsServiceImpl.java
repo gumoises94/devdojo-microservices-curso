@@ -49,7 +49,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		@Override
 		public Collection<? extends GrantedAuthority> getAuthorities() {
-			return AuthorityUtils.commaSeparatedStringToAuthorityList("authorityString: ROLE_"+this.getRole());
+			return AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_" + this.getRole());
 		}
 
 		@Override

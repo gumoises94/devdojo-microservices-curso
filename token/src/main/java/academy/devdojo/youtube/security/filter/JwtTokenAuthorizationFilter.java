@@ -44,7 +44,7 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 	}
 	
 	private boolean isAuthorizationHeader(String header) {
-		if(header != null && header.startsWith(jwtConfiguration.getHeader().getName()))
+		if(header != null && header.startsWith(jwtConfiguration.getHeader().getPrefix()))
 			return true;
 		
 		return false;

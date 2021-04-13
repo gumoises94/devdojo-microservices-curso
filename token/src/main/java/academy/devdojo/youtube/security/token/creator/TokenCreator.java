@@ -90,7 +90,7 @@ public class TokenCreator {
 
 	@SneakyThrows
 	private KeyPair generateKeyPair() {
-		log.info("Generating RSA 2048 Keys");
+		log.info("Generating RSA 2048 bits Keys");
 		
 		KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
 		generator.initialize(2048);
